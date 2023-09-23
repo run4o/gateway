@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "gateway.data.update-interval",
+      "type": "java.lang.String",
+      "description": "The interval between updates of data in hours."
+    }
+  ]
+}
