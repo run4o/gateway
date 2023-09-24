@@ -1,9 +1,14 @@
 {
   "properties": [
     {
-      "name": "gateway.data.update-interval",
-      "type": "java.lang.String",
+      "name": "gateway.data.update.interval",
+      "type": "java.lang.Long",
       "description": "The interval between updates of data in hours."
+    },
+    {
+      "name": "gate.data.update.key",
+      "type": "java.lang.String",
+      "description": "Fixer.io API Access Key"
     }
   ]
 }

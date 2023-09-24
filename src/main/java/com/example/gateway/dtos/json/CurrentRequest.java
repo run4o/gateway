@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class CurrentRequestDto {
+public class CurrentRequest {
 	
 	@NotEmpty
 	@Size(max = 36, message = "Size of requestId must be max 36")

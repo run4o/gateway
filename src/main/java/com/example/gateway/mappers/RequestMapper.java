@@ -1,16 +1,13 @@
 package com.example.gateway.mappers;
 
-import com.example.gateway.dtos.json.CurrentRequestDto;
-import com.example.gateway.dtos.json.HistoryRequestDto;
+import com.example.gateway.dtos.json.CurrentRequest;
+import com.example.gateway.dtos.json.HistoryRequest;
 import com.example.gateway.dtos.xml.Command;
 import com.example.gateway.entities.Request;
 
-/**
- * Change to mapstruct!
- **/
 public class RequestMapper {
 	
-	public static Request currentRequestDtoToRequest(CurrentRequestDto crDto) {
+	public static Request currentRequestDtoToRequest(CurrentRequest crDto) {
 		if (crDto == null) {
 			return null;
 		}
@@ -24,7 +21,7 @@ public class RequestMapper {
 		return request.build();
 	}
 	
-	public static Request historyRequestDtoToRequest(HistoryRequestDto hrDto) {
+	public static Request historyRequestDtoToRequest(HistoryRequest hrDto) {
 		if (hrDto == null) {
 			return null;
 		}

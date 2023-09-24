@@ -8,10 +8,10 @@ import lombok.Data;
 
 @Builder
 @Data
-public class HistoryRequestDto {
+public class HistoryRequest {
 	
 	@NotEmpty
-	@Size(min = 36, max = 36)
+	@Size(max = 36, message = "Size of requestId must be max 36")
 	private String requestId;
 	
 	@NotEmpty

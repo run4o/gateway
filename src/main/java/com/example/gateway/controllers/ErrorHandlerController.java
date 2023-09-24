@@ -1,6 +1,6 @@
 package com.example.gateway.controllers;
 
-import jakarta.validation.ValidationException;
+import com.example.gateway.validators.exceptions.RequestValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,10 +32,12 @@ public class ErrorHandlerController {
 	}
 	
 	@ExceptionHandler
-	ResponseEntity handleValidationError(ValidationException e) {
+	ResponseEntity handleValidationError(RequestValidationException e) {
 		Map<String, String> errorMap = new HashMap<>();
-		errorMap.put("InternalError", e.getMessage());
+		errorMap.put(e.getField(), e.getMsg());
 		return ResponseEntity.badRequest().body(errorMap);
 	}
+	
+	//HttpMessageConversionException
 	
 }
