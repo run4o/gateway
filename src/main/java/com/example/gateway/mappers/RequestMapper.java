@@ -46,7 +46,11 @@ public class RequestMapper {
 		Request.RequestBuilder request = Request.builder();
 		request.requestId(commandRequest.getId());
 		request.timestamp(String.valueOf(System.currentTimeMillis() / 1000L));
-		request.type("Command");
+		if (commandRequest.getGet() != null) {
+			request.type("CommandLatest");
+		} else {
+			request.type("CommandHistory");
+		}
 		request.client(commandRequest.getGet() != null ? commandRequest.getGet().getConsumer() :
 							   commandRequest.getHistory().getConsumer());
 		
