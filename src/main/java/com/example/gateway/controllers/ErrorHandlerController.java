@@ -15,7 +15,7 @@ import java.util.Map;
 public class ErrorHandlerController {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	ResponseEntity handleBindError(MethodArgumentNotValidException e) {
+	ResponseEntity<List<Map<String, String>>> handleBindError(MethodArgumentNotValidException e) {
 		List<Map<String, String>> errors = e.getFieldErrors().stream().map(error -> {
 			Map<String, String> errorMap = new HashMap<>();
 			errorMap.put(error.getField(), error.getDefaultMessage());
@@ -25,19 +25,21 @@ public class ErrorHandlerController {
 	}
 	
 	@ExceptionHandler
-	ResponseEntity handleTransactionError(SQLException e) {
+	ResponseEntity<Map<String, String>> handleTransactionError(SQLException e) {
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put("InternalError", "An Internal Error has occurred please contact admins!");
 		return ResponseEntity.badRequest().body(errorMap);
 	}
 	
 	@ExceptionHandler
-	ResponseEntity handleValidationError(RequestValidationException e) {
+	ResponseEntity<Map<String, String>> handleValidationError(RequestValidationException e) {
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put(e.getField(), e.getMsg());
 		return ResponseEntity.badRequest().body(errorMap);
 	}
 	
-	//HttpMessageConversionException
+	/**
+	 * Add handler for HttpMessageConversionException
+	 **/
 	
 }

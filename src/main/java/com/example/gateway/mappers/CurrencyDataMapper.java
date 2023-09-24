@@ -8,6 +8,10 @@ import java.time.LocalDate;
 
 @Component
 public class CurrencyDataMapper {
+	private CurrencyDataMapper() {
+		//Sonar
+	}
+	
 	public static CurrencyData fixerIoResponseToCurrencyData(FixerIoResponse fixerIoResponse) {
 		if (fixerIoResponse == null) {
 			return null;

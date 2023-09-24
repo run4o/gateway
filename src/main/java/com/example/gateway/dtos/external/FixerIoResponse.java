@@ -26,7 +26,7 @@ public class FixerIoResponse {
 	
 	@NotEmpty
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private String Date;
+	private String date;
 	
 	@NotEmpty
 	private Map<String, Double> rates;

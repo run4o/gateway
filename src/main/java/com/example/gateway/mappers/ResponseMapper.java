@@ -12,6 +12,10 @@ import java.util.Map;
 
 public class ResponseMapper {
 	
+	private ResponseMapper() {
+		//Sonar
+	}
+	
 	public static CurrentResponse currencyDataToCurrentResponse(CurrencyData currencyData) {
 		return CurrentResponse.builder().rates(convertRatesToMap(currencyData)).build();
 	}

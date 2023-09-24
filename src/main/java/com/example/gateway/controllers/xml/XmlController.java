@@ -1,6 +1,7 @@
 package com.example.gateway.controllers.xml;
 
 import com.example.gateway.dtos.xml.CommandRequest;
+import com.example.gateway.dtos.xml.CommandResponse;
 import com.example.gateway.entities.Request;
 import com.example.gateway.mappers.RequestMapper;
 import com.example.gateway.processors.RequestProccessor;
@@ -27,7 +28,7 @@ public class XmlController {
 	private final RequestProccessor requestProccessor;
 	
 	@PostMapping(value = "/command", produces = APPLICATION_XML_VALUE, consumes = APPLICATION_XML_VALUE)
-	public ResponseEntity command(@RequestBody CommandRequest commandRequest) {
+	public ResponseEntity<CommandResponse> command(@RequestBody CommandRequest commandRequest) {
 		Request request = RequestMapper.commandToRequest(commandRequest);
 		requestValidator.validate(request);
 		requestService.saveRequest(request);

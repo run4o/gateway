@@ -6,6 +6,9 @@ import com.example.gateway.dtos.xml.CommandRequest;
 import com.example.gateway.entities.Request;
 
 public class RequestMapper {
+	private RequestMapper() {
+		//Sonar
+	}
 	
 	public static Request currentRequestDtoToRequest(CurrentRequest crDto) {
 		if (crDto == null) {

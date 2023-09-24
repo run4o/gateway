@@ -17,11 +17,6 @@ import lombok.*;
 @Table(name = "REQUEST")
 public class Request {
 	
-	//	@Id
-	//	@Column(name = "id", nullable = false, unique = true)
-	//	@GeneratedValue
-	//	private long id;
-	
 	@Id
 	@Column(name = "requestId", nullable = false, unique = true)
 	@Size(max = 36)
