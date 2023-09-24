@@ -1,8 +1,9 @@
 package com.example.gateway.controllers.xml;
 
-import com.example.gateway.dtos.xml.Command;
+import com.example.gateway.dtos.xml.CommandRequest;
 import com.example.gateway.entities.Request;
 import com.example.gateway.mappers.RequestMapper;
+import com.example.gateway.processors.RequestProccessor;
 import com.example.gateway.services.RequestService;
 import com.example.gateway.validators.RequestValidator;
 import lombok.AllArgsConstructor;
@@ -23,13 +24,13 @@ public class XmlController {
 	
 	private final RequestService requestService;
 	private final RequestValidator requestValidator;
+	private final RequestProccessor requestProccessor;
 	
 	@PostMapping(value = "/command", produces = APPLICATION_XML_VALUE, consumes = APPLICATION_XML_VALUE)
-	public ResponseEntity command(@RequestBody Command command) {
-		System.out.println(command.toString());
-		Request request = RequestMapper.commandToRequest(command);
+	public ResponseEntity command(@RequestBody CommandRequest commandRequest) {
+		Request request = RequestMapper.commandToRequest(commandRequest);
 		requestValidator.validate(request);
 		requestService.saveRequest(request);
-		return ResponseEntity.ok().body(requestService.getRequestById(command.getId()));
+		return ResponseEntity.ok().body(requestProccessor.processCommandRequest(commandRequest));
 	}
 }

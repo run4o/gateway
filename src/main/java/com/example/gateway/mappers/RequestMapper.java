@@ -2,7 +2,7 @@ package com.example.gateway.mappers;
 
 import com.example.gateway.dtos.json.CurrentRequest;
 import com.example.gateway.dtos.json.HistoryRequest;
-import com.example.gateway.dtos.xml.Command;
+import com.example.gateway.dtos.xml.CommandRequest;
 import com.example.gateway.entities.Request;
 
 public class RequestMapper {
@@ -35,16 +35,17 @@ public class RequestMapper {
 		return request.build();
 	}
 	
-	public static Request commandToRequest(Command command) {
-		if (command == null) {
+	public static Request commandToRequest(CommandRequest commandRequest) {
+		if (commandRequest == null) {
 			return null;
 		}
 		
 		Request.RequestBuilder request = Request.builder();
-		request.requestId(command.getId());
+		request.requestId(commandRequest.getId());
 		request.timestamp(String.valueOf(System.currentTimeMillis() / 1000L));
 		request.type("Command");
-		request.client(command.getGet() != null ? command.getGet().getConsumer() : command.getHistory().getConsumer());
+		request.client(commandRequest.getGet() != null ? commandRequest.getGet().getConsumer() :
+							   commandRequest.getHistory().getConsumer());
 		
 		return request.build();
 	}

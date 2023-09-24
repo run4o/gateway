@@ -2,6 +2,7 @@ package com.example.gateway.mappers;
 
 import com.example.gateway.dtos.json.CurrentResponse;
 import com.example.gateway.dtos.json.HistoryResponse;
+import com.example.gateway.dtos.xml.CommandResponse;
 import com.example.gateway.entities.CurrencyData;
 
 import java.util.Arrays;
@@ -18,6 +19,11 @@ public class ResponseMapper {
 	public static HistoryResponse currencyDataToHistoryResponse(List<CurrencyData> currencyDataList) {
 		List<Map<String, Double>> ratesList = currencyDataList.stream().map(ResponseMapper::convertRatesToMap).toList();
 		return HistoryResponse.builder().rates(ratesList).build();
+	}
+	
+	public static CommandResponse currencyDataToCommandResponse(List<CurrencyData> currencyDataList) {
+		List<Map<String, Double>> ratesList = currencyDataList.stream().map(ResponseMapper::convertRatesToMap).toList();
+		return CommandResponse.builder().rates(ratesList).build();
 	}
 	
 	public static Map<String, Double> convertRatesToMap(CurrencyData currencyData) {

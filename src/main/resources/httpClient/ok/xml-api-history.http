@@ -2,6 +2,6 @@ POST http://localhost:8888/xml_api/command
 Accept: application/xml
 Content-Type: application/xml
 
-<command id="1234-8785">
+<commandRequest id="1235-555">
     <history consumer="13617162" currency="EUR" period="24"/>
-</command>
+</commandRequest>

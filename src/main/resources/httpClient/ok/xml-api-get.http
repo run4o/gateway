@@ -2,8 +2,8 @@ POST http://localhost:8888/xml_api/command
 Accept: application/xml
 Content-Type: application/xml
 
-<command id="1234">
+<commandRequest id="1233">
     <get consumer="13617162">
         <currency>EUR</currency>
     </get>
-</command>
+</commandRequest>

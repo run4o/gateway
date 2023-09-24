@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "requestId": "4",
+  "requestId": "66",
   "timestamp": 1586335186721,
   "client": "1234",
   "currency": "EUR"
